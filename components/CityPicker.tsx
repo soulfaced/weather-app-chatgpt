@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import {Country,City} from "country-state-city";
 import Select from "react-select";
 import { useRouter } from 'next/navigation';
-import {GlobeIcon} from "@heroicons/react/solid";
+// import {GlobeIcon} from "@heroicons/react/solid";
 
 type option = {
   value:{
@@ -54,7 +54,7 @@ const handelSelectedCity = (option:cityOption) => {
     <div className='space-y-4'>
       <div className='space-y-2'>
       <div className='flex items-center space-x-2 text-white/80'>
-        <GlobeIcon className='h-5 w-5 text-white' />
+        {/* <GlobeIcon className='h-5 w-5 text-white' /> */}
         <label htmlFor='country'>Country</label>
       </div>
       <Select
@@ -66,7 +66,7 @@ const handelSelectedCity = (option:cityOption) => {
       {selectedCountry && (
         <div className='space-y-2'>
         <div className='flex items-center space-x-2 text-white/80'>
-          <GlobeIcon className='h-5 w-5 text-white' />
+          {/* <GlobeIcon className='h-5 w-5 text-white' /> */}
           <label htmlFor='country'>City</label>
         </div>
         <Select

@@ -1,6 +1,6 @@
 // types.ts
 
-export interface Daily {
+interface Daily {
     sunrise: [string];
     sunset: [string];
     time: [string];
@@ -8,7 +8,7 @@ export interface Daily {
     weathercode: [number];
   }
   
-  export interface DailyUnits {
+  interface DailyUnits {
     sunrise: string;
     sunset: string;
     time: string;
@@ -16,7 +16,7 @@ export interface Daily {
     weathercode: string;
   }
   
-  export interface Hourly {
+  interface Hourly {
     apparent_temperature: [number];
     dewpoint_2m: [number];
     precipitation: [number];
@@ -27,7 +27,7 @@ export interface Daily {
     time: [string];
   }
   
-  export interface HourlyUnits {
+  interface HourlyUnits {
     apparent_temperature: string;
     dewpoint_2m: string;
     precipitation: string;
@@ -38,7 +38,7 @@ export interface Daily {
     time: string;
   }
   
-  export interface Root {
+  interface Root {
     daily: Daily;
     daily_units: DailyUnits;
     elevation: number;
