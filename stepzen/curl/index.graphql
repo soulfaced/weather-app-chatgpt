@@ -1,6 +1,6 @@
 type Daily {
-  sunrise: [DateTime]
-  sunset: [DateTime]
+  sunrise: [String]
+  sunset: [String]
   time: [Date]
   uv_index_max: [Float]
   weathercode: [Int]
@@ -22,7 +22,7 @@ type Hourly {
   rain: [Float]
   relativehumidity_2m: [Int]
   temperature_2m: [Float]
-  time: [DateTime]
+  time: [String]
 }
 
 type HourlyUnits {
