@@ -1,5 +1,6 @@
 import { getClient } from '@/apollo-client';
 import CalloutCard from '@/components/CalloutCard';
+import InformationPannel from '@/components/InformationPannel';
 import StatCard from '@/components/StatCard';
 import fetchWeatherQuery from '@/graphql/queries/fetchWeatherQueries';
 import React from 'react';
@@ -29,9 +30,14 @@ async function WeatherPage({params:{city,lat,long}}:Props) {
     const results :Root = data.myQuery;
     // console.log(results);
   return (
-    // Information pannel 
+  <div className='flex flex-col min-h-screen md:flex-row'>
+    <InformationPannel
+    city={city}
+    lat={lat}
+    long={long}
+    />
     <div>
-        <div className='p-s'>
+        <div className='flex-1 lg:p-18'>
             <div className='pb-5'>
                 <h2 className='text-xl font-bold'>Todays Overview</h2>
                 <p className='text-sm text-gray-400'>
@@ -45,7 +51,7 @@ async function WeatherPage({params:{city,lat,long}}:Props) {
                 message="this is where GPT summary will go"
                 />
             </div>
-            <div className='grid grid-cols-1 xl:grid-cols-2 gap-5 m-2'>
+            <div className='grid grid-cols-1 xl:grid-cols-2 gap-5 m-2 mb-5'>
                 <StatCard 
                 title='max temperture'
                 color='yellow'
@@ -84,6 +90,7 @@ async function WeatherPage({params:{city,lat,long}}:Props) {
             </div>
         </div>
         <hr className='"mb-5' />
+    </div>
     </div>
   )
 }
