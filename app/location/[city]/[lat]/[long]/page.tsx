@@ -4,6 +4,8 @@ import InformationPannel from '@/components/InformationPannel';
 import StatCard from '@/components/StatCard';
 import TempChart from '@/components/TempChart';
 import fetchWeatherQuery from '@/graphql/queries/fetchWeatherQueries';
+import cleanData from '@/lib/cleanData';
+import getBasePath from '@/lib/getBasePath';
 import React from 'react';
 
 export const revalidate =60;
@@ -32,6 +34,20 @@ async function WeatherPage({params:{city,lat,long}}:Props) {
     })
 
     const results :Root = data.myQuery;
+    const dataToSend = cleanData(results,city);
+
+    const res = await fetch(`${(getBasePath())}/api/getWeatherSummary`,{
+        method:"POST",
+        headers:{
+            "content-type":"application/json",
+        },
+        body:JSON.stringify({
+            weatherData:dataToSend
+        })
+    })
+
+    const GPTdata = await res.json();
+    const {content} = GPTdata;
     // console.log(results);
   return (
   <div className='flex flex-col min-h-screen md:flex-row'>
@@ -52,7 +68,7 @@ async function WeatherPage({params:{city,lat,long}}:Props) {
             </div>
             <div className='m-2 bm-10'>
                 <CalloutCard 
-                message="this is where GPT summary will go"
+                message={content}
                 />
             </div>
             <div className='grid grid-cols-1 xl:grid-cols-2 gap-5 m-2 mb-5'>
