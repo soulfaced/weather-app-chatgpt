@@ -1,0 +1,4 @@
+{
+  "endpoint": "api/ordered-wombat",
+  "root": "stepzen/curl"
+}
